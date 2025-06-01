@@ -1,0 +1,227 @@
+{
+    "name": "正则导入",
+    "description": "",
+    "personality": "",
+    "scenario": "",
+    "first_mes": "<Bar>\r\n[name:落雪]\r\n(条块头)\r\n[favor:50]\r\n(条块尾/数块头)\r\n[Encounters:7]\r\n(数块尾/描述头)\r\n[psychological feeling:这是变态吧!]\r\n</Bar>\r\n",
+    "mes_example": "",
+    "creatorcomment": "",
+    "avatar": "none",
+    "chat": "正则导入 - 2024-10-12@22h49m27s",
+    "talkativeness": "0.5",
+    "fav": false,
+    "tags": [],
+    "spec": "chara_card_v3",
+    "spec_version": "3.0",
+    "data": {
+        "name": "正则导入",
+        "description": "",
+        "personality": "",
+        "scenario": "",
+        "first_mes": "<Bar>\r\n[name:落雪]\r\n(条块头)\r\n[favor:50]\r\n(条块尾/数块头)\r\n[Encounters:7]\r\n(数块尾/描述头)\r\n[psychological feeling:这是变态吧!]\r\n</Bar>\r\n",
+        "mes_example": "",
+        "creator_notes": "",
+        "system_prompt": "",
+        "post_history_instructions": "",
+        "tags": [],
+        "creator": "",
+        "character_version": "",
+        "alternate_greetings": [],
+        "extensions": {
+            "talkativeness": "0.5",
+            "fav": false,
+            "world": "",
+            "depth_prompt": {
+                "prompt": "",
+                "depth": 4,
+                "role": "system"
+            },
+            "regex_scripts": [
+                {
+                    "id": "5aec5112-91d2-4260-bd5e-10bbd1c77571",
+                    "scriptName": "好感匹配",
+                    "findRegex": "/\\[favor:(.+?)\\]/gi",
+                    "replaceString": "            <div class=\"status-label\">好感度</div>\n            <div class=\"status-value\">{{match}}%</div>\n            <div class=\"progress-bar\">\n                <div class=\"progress\" style=\"width: {{match}}%;\"></div>\n            </div>",
+                    "trimStrings": [
+                        "[favor:",
+                        "]"
+                    ],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "9ee90f0a-3820-4389-aa1a-af2259fb996b",
+                    "scriptName": "名字匹配",
+                    "findRegex": "/\\[name:(.+?)\\]/gi",
+                    "replaceString": "        <div class=\"name-block\">\n            <div class=\"name-value\">{{match}}</div>\n        </div>",
+                    "trimStrings": [
+                        "[name:",
+                        "]"
+                    ],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "aea7c9ae-80ce-430d-99d5-ee2523382a88",
+                    "scriptName": "遇见次数",
+                    "findRegex": "/\\[Encounters:(.+?)\\]/gi",
+                    "replaceString": "              <div class=\"count-item\">\n                    <div class=\"status-label\">遇见次数</div>\n                    <div class=\"status-value\">{{match}}</div>\n                </div>",
+                    "trimStrings": [
+                        "[Encounters:",
+                        "]"
+                    ],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "642e39e0-f08e-428d-8039-83d60c111933",
+                    "scriptName": "心理感受",
+                    "findRegex": "/\\[psychological feeling:(.+?)\\]/gi",
+                    "replaceString": "                <span class=\"body-part\">\n                    心理感受\n                    <div class=\"body-part-description\">{{match}}</div>\n                </span>",
+                    "trimStrings": [
+                        "[psychological feeling:",
+                        "]"
+                    ],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "1e81221e-87e1-4160-adfd-69f5f813109a",
+                    "scriptName": "[现代风]顶端匹配",
+                    "findRegex": "/<Bar>/gi",
+                    "replaceString": "<!DOCTYPE html>\n<html lang=\"zh\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Galegame Status Bar with Name and Long Body Part Descriptions</title>\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #0a192f;\n            color: #e6f1ff;\n        }\n        .status-container {\n            max-width: 600px;\n            margin: 20px auto;\n            background-color: #112240;\n            border-radius: 12px;\n            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);\n            overflow: hidden;\n        }\n        .status-block {\n            padding: 20px;\n            border-bottom: 1px solid #233554;\n        }\n        .status-block:last-child {\n            border-bottom: none;\n        }\n        .status-label {\n            font-size: 14px;\n            margin-bottom: 5px;\n            color: #8892b0;\n            text-transform: uppercase;\n        }\n        .status-value {\n            font-size: 24px;\n            font-weight: bold;\n            color: #64ffda;\n        }\n        .name-block {\n            text-align: center;\n            padding: 20px;\n            background-color: #1d2d50;\n        }\n        .name-value {\n            font-size: 28px;\n            font-weight: bold;\n            color: #ffffff;\n        }\n        .progress-bar {\n            width: 100%;\n            height: 10px;\n            background-color: #233554;\n            border-radius: 5px;\n            overflow: hidden;\n            margin-top: 10px;\n        }\n        .progress {\n            height: 100%;\n            background-color: #64ffda;\n            transition: width 0.5s ease-in-out;\n        }\n        .count-row {\n            display: flex;\n            justify-content: center;\n            gap: 20px;\n        }\n        .count-item {\n            width: 90px;\n            height: 90px;\n            display: flex;\n            flex-direction: column;\n            justify-content: center;\n            align-items: center;\n            background-color: #1a365d;\n            border: 2px solid #2d3748;\n            border-radius: 12px;\n            transition: all 0.3s ease;\n        }\n        .count-item:hover {\n            transform: translateY(-5px);\n            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);\n            border-color: #64ffda;\n        }\n        .count-item .status-label {\n            color: #a0aec0;\n            font-size: 12px;\n            margin-bottom: 5px;\n        }\n        .count-item .status-value {\n            color: #64ffda;\n            font-size: 26px;\n        }\n        .body-parts {\n            display: flex;\n            flex-wrap: wrap;\n            justify-content: center;\n        }\n        .body-part {\n            color: #e6f1ff;\n            font-size: 14px;\n            margin: 5px 10px;\n            padding: 8px 15px;\n            border-radius: 20px;\n            background-color: #233554;\n            transition: all 0.3s ease;\n            cursor: pointer;\n            position: relative;\n        }\n        .body-part:hover {\n            background-color: #64ffda;\n            color: #0a192f;\n            transform: translateY(-2px);\n            box-shadow: 0 2px 4px rgba(100, 255, 218, 0.3);\n        }\n        .body-part-description {\n            display: none;\n            position: absolute;\n            bottom: 100%;\n            left: 50%;\n            transform: translateX(-50%);\n            background-color: #233554;\n            color: #e6f1ff;\n            padding: 10px;\n            border-radius: 6px;\n            font-size: 14px;\n            width: 200px;\n            text-align: center;\n            z-index: 1;\n            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n        }\n        .body-part:hover .body-part-description {\n            display: block;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"status-container\">",
+                    "trimStrings": [],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": true,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "fa6ec6a7-2e1d-477a-b1c1-0084d7fb48d9",
+                    "scriptName": "[可爱风]顶部匹配",
+                    "findRegex": "/<Bar>/gi",
+                    "replaceString": "<!DOCTYPE html>\n<html lang=\"zh\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Galegame Elegant Status Bar</title>\n    <style>\n        body {\n            font-family: 'Times New Roman', serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f0e6e6;\n            color: #4a4a4a;\n        }\n        .status-container {\n            max-width: 600px;\n            margin: 20px auto;\n            background-color: #fff9f9;\n            border-radius: 15px;\n            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n            overflow: hidden;\n            border: 1px solid #e0d0d0;\n        }\n        .status-block {\n            padding: 20px;\n            border-bottom: 1px solid #e0d0d0;\n        }\n        .status-block:last-child {\n            border-bottom: none;\n        }\n        .status-label {\n            font-size: 14px;\n            margin-bottom: 5px;\n            color: #8a7676;\n            text-transform: uppercase;\n            letter-spacing: 1px;\n        }\n        .status-value {\n            font-size: 24px;\n            font-weight: bold;\n            color: #d4a0a0;\n        }\n        .name-block {\n            text-align: center;\n            padding: 30px 20px;\n            background-color: #f9e8e8;\n            position: relative;\n        }\n        .name-block::after {\n            content: '';\n            position: absolute;\n            bottom: 0;\n            left: 50%;\n            transform: translateX(-50%);\n            width: 80%;\n            height: 1px;\n            background: linear-gradient(to right, transparent, #d4a0a0, transparent);\n        }\n        .name-value {\n            font-size: 32px;\n            font-weight: normal;\n            color: #a06060;\n            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);\n        }\n        .progress-bar {\n            width: 100%;\n            height: 8px;\n            background-color: #f0e0e0;\n            border-radius: 4px;\n            overflow: hidden;\n            margin-top: 10px;\n        }\n        .progress {\n            height: 100%;\n            background-color: #d4a0a0;\n            transition: width 0.5s ease-in-out;\n        }\n        .count-row {\n            display: flex;\n            justify-content: center;\n            gap: 20px;\n        }\n        .count-item {\n            width: 100px;\n            height: 100px;\n            display: flex;\n            flex-direction: column;\n            justify-content: center;\n            align-items: center;\n            background-color: #fff9f9;\n            border: 1px solid #e0d0d0;\n            border-radius: 50%;\n            transition: all 0.3s ease;\n            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);\n        }\n        .count-item:hover {\n            transform: translateY(-5px);\n            box-shadow: 0 5px 15px rgba(212, 160, 160, 0.2);\n            border-color: #d4a0a0;\n        }\n        .count-item .status-label {\n            color: #8a7676;\n            font-size: 12px;\n            margin-bottom: 5px;\n        }\n        .count-item .status-value {\n            color: #d4a0a0;\n            font-size: 26px;\n        }\n        .body-parts {\n            display: flex;\n            flex-wrap: wrap;\n            justify-content: center;\n            gap: 10px;\n        }\n        .body-part {\n            color: #8a7676;\n            font-size: 14px;\n            padding: 8px 15px;\n            border-radius: 20px;\n            background-color: #fff9f9;\n            transition: all 0.3s ease;\n            cursor: pointer;\n            position: relative;\n            border: 1px solid #e0d0d0;\n        }\n        .body-part:hover {\n            background-color: #f9e8e8;\n            color: #a06060;\n            transform: translateY(-2px);\n            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n        }\n        .body-part-description {\n            display: none;\n            position: absolute;\n            bottom: 120%;\n            left: 50%;\n            transform: translateX(-50%);\n            width: 200px;\n            background-color: #fff9f9;\n            color: #8a7676;\n            padding: 10px;\n            border-radius: 6px;\n            font-size: 12px;\n            line-height: 1.4;\n            z-index: 1;\n            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n            border: 1px solid #e0d0d0;\n            text-align: left;\n        }\n        .body-part:hover .body-part-description {\n            display: block;\n        }\n        .body-part-description::after {\n            content: '';\n            position: absolute;\n            top: 100%;\n            left: 50%;\n            margin-left: -5px;\n            border-width: 5px;\n            border-style: solid;\n            border-color: #fff9f9 transparent transparent transparent;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"status-container\">",
+                    "trimStrings": [],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "a883aba9-6115-4c64-b3d1-dfb772702d55",
+                    "scriptName": "状态栏结尾",
+                    "findRegex": "/<\\/Bar>/gi",
+                    "replaceString": "            </div>\n        </div>\n    </div>\n</body>\n</html>",
+                    "trimStrings": [],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "00a7e76f-b9e1-433e-ba8f-11dc4bca0afb",
+                    "scriptName": " 条块头",
+                    "findRegex": "/\\(条块头\\)/gi",
+                    "replaceString": "        <div class=\"status-block\">",
+                    "trimStrings": [],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "0f63b8b8-7ab9-496f-b9fd-58e2f0b2e46f",
+                    "scriptName": "条块尾/数块头",
+                    "findRegex": "/\\(条块尾\\/数块头\\)/gi",
+                    "replaceString": "        </div>\n        <div class=\"status-block\">\n            <div class=\"count-row\">",
+                    "trimStrings": [],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                },
+                {
+                    "id": "71ce5244-b126-4c0e-b077-337a2220857f",
+                    "scriptName": "数块尾/描述头",
+                    "findRegex": "/\\(数块尾\\/描述头\\)/gi",
+                    "replaceString": "            </div>\n        </div>\n        <div class=\"status-block\">\n            <div class=\"body-parts\">",
+                    "trimStrings": [],
+                    "placement": [
+                        2
+                    ],
+                    "disabled": false,
+                    "markdownOnly": true,
+                    "promptOnly": false,
+                    "runOnEdit": true,
+                    "substituteRegex": false,
+                    "minDepth": null,
+                    "maxDepth": null
+                }
+            ]
+        },
+        "group_only_greetings": []
+    },
+    "create_date": "2025-1-22 @13h 04m 39s 43ms"
+}
